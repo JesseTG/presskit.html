@@ -62,7 +62,10 @@
     <dd>
       <a href="..">{{company.title}}</a>
     </dd>
+
+    {% if company.based-in %}
     <dd>Based in {{company.based-in}}</dd>
+    {% endif %}
 
     {% for partner in presskit.partners %}
     <dt>{{ partner.type }}:</dt>
@@ -76,11 +79,14 @@
     {% if partner.based-in %}<dd>Based in {{ partner.based-in }}</dd>{% endif %}
     {% endfor %}
 
+    {% if presskit.release-dates %}
     <dt>Release date:</dt>
     {% for release in presskit.release-dates %}
     <dd>{{ release }}</dd>
     {% endfor %}
+    {% endif %}
 
+    {% if presskit.platforms %}
     <dt>Platforms:</dt>
     {% for platform in presskit.platforms %}
     <dd>
@@ -91,16 +97,19 @@
       {% endif %}
     </dd>
     {% endfor %}
+    {% endif %}
 
     <dt>Website:</dt>
     <dd>
       <a href="{{presskit.website}}">{{ presskit.website | remove_first: 'http://' | remove_first: "https://" }}</a>
     </dd>
 
+    {% if presskit.prices %}
     <dt>Regular Price:</dt>
     {% for price in presskit.prices %}
     <dd>{{ price.currency }} {{ price.value }}</dd>
     {% endfor %}
+    {% endif %}
 
     {% for relation in presskit.relations %}
     <dt>{{ relation.type }}:</dt>
