@@ -55,7 +55,7 @@
   <div class="gallery clearfix" id="gallery">
     {% for screenshot in images.screenshots %}
     <div class="gallery__item">
-      <a href="images/{{ screenshot }}">
+      <a href="/assets/images/{{ screenshot }}">
         <img src="{{ screenshot }}" alt="{{screenshot}}">
       </a>
     </div>
@@ -68,7 +68,7 @@
     <div class="gallery clearfix">
       {% for element in screenshot.elements %}
       <div class="gallery__item">
-        <a href="images/{{ element }}">
+        <a href="/assets/images/{{ element }}">
           <img src="{{ element }}" alt="{{ element }}">
         </a>
       </div>
