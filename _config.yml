@@ -13,11 +13,11 @@ defaults:
     values:
       layout: "product"
   - scope:
-      path: "images/header.*"
+      path: "assets/images/header.*"
     values:
       header: true
   - scope:
-      path: "images"
+      path: "assets/images"
     values:
       header: true
 
