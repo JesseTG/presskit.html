@@ -1,0 +1,51 @@
+---
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    {% assign presskit = site.data.company %}
+    {% assign images = site.static_files | where: "image", true %}
+    {% assign company = site.data.company %}
+    {% include head.html %}
+  </head>
+  <body>
+    <div class="page grid">
+      {% include nav.html %}
+
+      <div class="page-wrapper grid__item">
+        <header class="page-header">
+          {% if company.header %}
+          <img src="{{ site.baseurl }}/images/{{ company.header }}" alt="{{presskit.title}}" title="{{presskit.title}}">
+          {% endif %}
+        </header>
+
+        <main class="page-content" role="main">
+          <section class="block grid">
+            {% include factsheet.html %}
+
+            <article class="description grid__item">
+              {% include description.html %}
+
+              <h2 id="projects">Projects</h2>
+              <ul>
+                {% for product in site.products %}
+                <li>
+                  <a href="{{ product.url | absolute_url }}">{{ product.title }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </article>
+          </section>
+
+          {% include assets.html %}
+          {% include recognition.html %}
+          {% include team.html title="Team & Repeating Collaborator" %}
+        </main>
+
+        {% include footer.html %}
+      </div>
+    </div>
+
+    {% include scripts.html %}
+  </body>
+</html>

@@ -1,0 +1,104 @@
+{% if presskit.trailers %}
+<section class="block">
+  <h2 id="videos">Videos</h2>
+
+  {% for trailer in presskit.trailers %}
+  <div>
+    {% if trailer.youtube %}
+    <p>
+      <strong>{{ trailer.name }}</strong> — <a href="https://www.youtube.com/embed/{{ trailer.youtube | strip }}?rel=0">YouTube</a> {% if trailer.download %}| <a href="{{ trailer.download }}" target="_blank">Download</a>{% endif %}
+    </p>
+
+    <div class="video-player">
+      <iframe class="video-player__frame" src="https://www.youtube.com/embed/{{ trailer.youtube | strip }}?rel=0" frameborder="0" allowfullscreen></iframe>
+    </div>
+    {% endif %}
+
+    {% if trailer.vimeo %}
+    <p>
+      <strong>{{ trailer.name }}</strong> — <a href="https://player.vimeo.com/video/{{ trailer.vimeo | strip }}">Vimeo</a> {% if trailer.download %}| <a href="{{ trailer.download }}" target="_blank">Download</a>{% endif %}
+    </p>
+
+    <div class="video-player">
+      <iframe class="video-player__frame" src="https://player.vimeo.com/video/{{ trailer.vimeo | strip }}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    {% endif %}
+
+    {% unless trailer.youtube %}
+      {% unless trailer.vimeo %}
+        <p>
+          <strong>{{ trailer.name }}</strong> — <a href="{{ trailer.download }}" target="_blank">Download</a>
+        </p>
+      {% endunless %}
+    {% endunless %}
+  </div>
+  {% endfor %}
+</section>
+{% else %}
+<section class="block">
+  <h2 id="videos">Videos</h2>
+
+  <p>There are currently no trailers available for {{ presskit.title }}. Check back later for more or <a href="#contact">contact us</a> for specific requests!</p>
+</section>
+{% endif %}
+
+{% if hasScreenshots %}
+<section class="block">
+  <h2 id="images">Images</h2>
+
+  <aside class="block__notice">
+    <a href="images/images.zip">
+      download all screenshots & photos as .zip
+    </a>
+  </aside>
+
+  <div class="gallery clearfix" id="gallery">
+    {% for screenshot in images.screenshots %}
+    <div class="gallery__item">
+      <a href="images/{{ screenshot }}">
+        <img src="{{ screenshot }}" alt="{{screenshot}}">
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% for screenshot in images.screenshotsWithCategory %}
+  <section>
+    <h3 class="capitalize" id="gallery-{{ screenshot.title }}">{{ screenshot.title }}</h3>
+    <div class="gallery clearfix">
+      {% for element in screenshot.elements %}
+      <div class="gallery__item">
+        <a href="images/{{ element }}">
+          <img src="{{ element }}" alt="{{ element }}">
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endfor %}
+</section>
+{% endif %}
+
+{% if images.logos %}
+<section class="block">
+  <h2 id="logo">Logo & Icon</h2>
+
+  <aside class="block__notice">
+    <a href="images/logo.zip">
+      download logo files as .zip
+    </a>
+  </aside>
+
+  {% for logo in images.logos %}
+  <a href="images/{{ logo }}">
+    <img src="images/{{ logo }}" alt="{{ logo }}" class="logo">
+  </a>
+  {% endfor %}
+</section>
+{% else %}
+<section class="block">
+  <h2 id="logo">Logo & Icon</h2>
+
+  <p>There are currently no logos or icons available for {{ presskit.title }}. Check back later for more or <a href="#contact">contact us</a> for specific requests!</p>
+</section>
+{% endif %}

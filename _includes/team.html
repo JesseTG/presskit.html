@@ -1,0 +1,47 @@
+<section class="block grid _team-fix-margin-top">
+  {% if presskit.credits %}
+  <article class="grid__item grid__item--flexible">
+    {% if title %}
+    <h2 id="credits">{{title}}</h2>
+    {% else %}
+    <h2 id="credits">{{presskit.title}} Credits</h2>
+    {% endif %}
+
+    <dl>
+      {% for credit in presskit.credits %}
+      <dt>{{ credit.person }}</dt>
+
+      <dd>
+        {% if credit.website %}
+          <a href="{{ credit.website }}">{{ credit.role }}</a>
+        {% else %}
+          {{ credit.role }}
+        {% endif %}
+      </dd>
+      {% endfor %}
+    </dl>
+  </article>
+  {% endif %}
+
+  {% if presskit.contacts %}
+  <article class="grid__item grid__item--flexible">
+    <h2 id="contact">Contact</h2>
+
+    <dl>
+      {% for contact in presskit.contacts %}
+      <dt>{{ contact.name }}</dt>
+
+      <dd>
+        {% if contact.mail %}
+        <a href="mailto:{{ contact.mail }}">{{ contact.mail }}</a>
+        {% endif %}
+
+        {% if contact.link %}
+        <a href="{{ contact.link }}">{{ contact.link | remove_first: 'http://' | remove_first: "https://" }}</a>
+        {% endif %}
+      </dd>
+      {% endfor %}
+    </dl>
+  </article>
+  {% endif %}
+</section>

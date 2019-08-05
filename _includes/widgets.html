@@ -1,0 +1,60 @@
+{% if presskit.widgets %}
+<section class="block">
+  <h2 id="widgets">Widgets</h2>
+
+  <div class="grid">
+    {% if presskit.widgets.appstore %}
+    <p class="grid__item">
+      <a
+        href="https://itunes.apple.com/app/id{{ presskit.widgets.appstore | strip }}"
+        target="_blank"
+        class="widget widget--appstore">
+        {% include appstore.html %}
+      </a>
+    </p>
+    {% endif %}
+
+    {% if presskit.widgets.playstore %}
+    <p class="grid__item">
+      <a
+        href="https://play.google.com/store/apps/details?id={{ presskit.widgets.playstore | strip }}"
+        target="_blank"
+        class="widget widget--playstore">
+        {% include playstore.html %}
+      </a>
+    </p>
+    {% endif %}
+  </div>
+
+  {% if presskit.widgets.steam %}
+  <p>
+    <iframe src="https://store.steampowered.com/widget/{{ presskit.widgets.steam | strip }}/" frameborder="0" class="widget widget--steam"></iframe>
+  </p>
+  {% endif %}
+
+  {% if presskit.widgets.humble %}
+  <p>
+    <iframe src="https://www.humblebundle.com/widget/v2/product/{{ presskit.widgets.humble | strip }}" frameborder="0" scrolling="no" class="widget widget--humble"></iframe>
+  </p>
+  {% endif %}
+
+  {% if presskit.widgets.itch %}
+  <p>
+    <iframe src="https://itch.io/embed/{{ presskit.widgets.itch | strip }}?dark=true" frameborder="0" class="widget widget--itch"></iframe>
+  </p>
+  {% endif %}
+
+  {% if presskit.widgets.gamejolt %}
+  <p>
+    <iframe src="https://widgets.gamejolt.com/package/v1?key={{ presskit.widgets.gamejolt | strip }}" frameborder="0" class="widget widget--gamejolt"></iframe>
+  </p>
+  {% endif %}
+
+  {% if presskit.widgets.bandcamp %}
+  <p>
+    <!-- TODO: customize `linkcol` with brand color. -->
+    <iframe src="https://bandcamp.com/EmbeddedPlayer/album={{ presskit.widgets.bandcamp | strip }}/size=large/bgcol=ffffff/linkcol=3398ff/tracklist=false/artwork=small/transparent=true/" seamless class="widget widget--bandcamp"></iframe>
+  </p>
+  {% endif %}
+</section>
+{% endif %}

@@ -1,0 +1,39 @@
+title: Press Kit
+description: A press kit kit!
+
+collections:
+  products:
+    output: true
+    permalink: /:name
+
+defaults:
+  - scope:
+      path: "" # an empty string here means all files in the project
+      type: "products"
+    values:
+      layout: "product"
+  - scope:
+      path: "images/header.*"
+    values:
+      header: true
+  - scope:
+      path: "images"
+    values:
+      header: true
+
+
+strict_front_matter: true
+
+sass:
+    sass_dir: _sass
+    style: compressed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - .vscode
+  - .idea
+  - .gitignore
+  - README.md
+  - LICENSE
+  - _config.yml

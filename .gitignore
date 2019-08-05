@@ -32,3 +32,10 @@ build/
 
 # Bower stuff.
 bower_components/
+
+# Jekyll stuff
+_site/
+.sass-cache/
+.jekyll-metadata
+.idea/
+.vscode/

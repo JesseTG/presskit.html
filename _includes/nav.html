@@ -1,0 +1,128 @@
+<nav class="page-nav nav grid__item">
+  <h1 class="nav__title">
+    {% if page.layout == "company" %}
+    <a href=".">{{presskit.title}}</a>
+    {% else %}
+    <a href="{{ site.url }}">{{site.data.company.title}}</a>
+    {% endif %}
+  </h1>
+
+  <aside class="nav__subtitle">
+    {% if page.layout == "product" %}
+    <a href="..">press kit</a>
+    {% else %}
+    <a href="{{side.data.company.website}}">{{ site.data.company.website | remove_first: 'http://' | remove_first: "https://" }}</a>
+    {% endif %}
+  </aside>
+
+  <div class="nav__toggle" id="hamburger">
+    <a href="#" class="button" id="hamburger-toggle">
+      <svg width="10" height="10" viewBox="0 0 19 19" xmlns="http://www.w3.org/2000/svg">
+        <g fill="currentColor" fill-rule="nonzero">
+          <path d="M0 16h19v3H0zM0 8h19v3H0zM0 0h19v3H0z" />
+        </g>
+      </svg>
+      &nbsp;Menu
+    </a>
+  </div>
+
+  <ul class="nav__list" id="hamburger-target">
+    <li>
+      <a class="nav__item" href="#factsheet">Factsheet</a>
+    </li>
+
+    {% if presskit.description %}
+    <li>
+      <a class="nav__item" href="#description">Description</a>
+    </li>
+    {% endif %}
+
+    {% if presskit.history %}
+    <li>
+      <a class="nav__item" href="#history">History</a>
+    </li>
+    {% endif %}
+
+    {% if presskit.histories %}
+    <li>
+      <a class="nav__item" href="#history">History</a>
+    </li>
+    {% endif %}
+
+    {% if site.products %}
+    <li>
+      <a class="nav__item" href="#projects">Projects</a>
+    </li>
+    {% endif %}
+
+    {% if presskit.widgets.mailchimp %}
+    <li>
+      <a class="nav__item" href="#mailing-list">Mailing List</a>
+    </li>
+    {% endif %}
+
+    {% if presskit.trailers %}
+    <li>
+      <a class="nav__item" href="#videos">Videos</a>
+    </li>
+    {% endif %}
+
+    {% if images.screenshots %}
+    <li>
+      <a class="nav__item" href="#images">Images</a>
+    </li>
+    {% endif %}
+
+    {% if images.logos %}
+    <li>
+      <a class="nav__item" href="#logo">Logo & Icon</a>
+    </li>
+    {% endif %}
+
+    {% if presskit.widgets %}
+    <li>
+      <a class="nav__item" href="#widgets">Widgets</a>
+    </li>
+    {% endif %}
+
+    {% if presskit.awards %}
+    <li>
+      <a class="nav__item" href="#awards">Awards & Recognition</a>
+    </li>
+    {% endif %}
+
+    {% if presskit.quotes %}
+    <li>
+      <a class="nav__item" href="#articles">Selected Articles</a>
+    </li>
+    {% endif %}
+
+    {% if presskit.additionals %}
+    <li>
+      <a class="nav__item" href="#links">Additional Links</a>
+    </li>
+    {% endif %}
+
+    {% if isProduct %}
+    <li>
+      <a class="nav__item" href="#about">About {{company.title}}</a>
+    </li>
+    {% endif %}
+
+    {% for a in presskit.abouts %}
+    <li>
+      <a class="nav__item" href="#about_{{title}}">About {{ a.title }}</a>
+    </li>
+    {% endfor %}
+
+    <li>
+      <a class="nav__item" href="#credits">Team</a>
+    </li>
+
+    {% if presskit.contacts %}
+    <li>
+      <a class="nav__item" href="#contact">Contact</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>

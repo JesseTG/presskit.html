@@ -1,0 +1,45 @@
+{% if presskit.awards %}
+<section class="block">
+  <h2 id="awards">Awards & Recognition</h2>
+
+  <ul>
+    {% for a in presskit.awards %}
+    <li>"{{ a.description }}" <cite>{{ a.info }}</cite></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if presskit.quotes %}
+<section class="block">
+  <h2 id="articles">Selected Articles</h2>
+
+  <ul>
+    {% for q in presskit.quotes %}
+    <li class="quote">
+      <blockquote class="quote__content" cite="{{ q.link }}">
+        {{ q.description }}
+      </blockquote>
+      <cite class="quote__author">
+        {{ q.name }}, <a href="{{ q.link }}">{{ q.website }}</a>
+      </cite>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if presskit.additionals %}
+<section class="block">
+  <h2 id="links">Additional Links</h2>
+
+  <dl>
+    {% for a in presskit.additionals %}
+    <dt>{{ a.title }}</dt>
+    <dd>
+      {{ a.description }} <a href="{{ a.link }}">{{ a.link | remove_first: 'http://' | remove_first: "https://" }}</a>.
+    </dd>
+    {% endfor %}
+  </dl>
+</section>
+{% endif %}

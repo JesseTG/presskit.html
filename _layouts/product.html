@@ -1,0 +1,53 @@
+---
+---
+<!DOCTYPE html>
+<html>
+  <head>
+
+    {% assign presskit = page %}
+    {% assign images = site.static_files | where: "image", true %}
+    {% assign company = site.data.company %}
+    {% include head.html %}
+  </head>
+  <body>
+    <div class="page grid">
+      {% include nav.html %}
+
+      <div class="page-wrapper grid__item">
+        <header class="page-header">
+          {% if presskit.header %}
+          <img src="{{ site.baseurl }}/images/{{ presskit.header }}" alt="{{presskit.title}}" title="{{presskit.title}}">
+          {% endif %}
+        </header>
+
+        <main class="page-content" role="main">
+          <section class="block grid">
+            {% include factsheet.html %}
+
+            <article class="description grid__item">
+              {% include description.html %}
+
+              <h2 id="features">Features</h2>
+              <ul>
+                {% for feature in presskit.features %}
+                <li>{{ feature }}</li>
+                {% endfor %}
+              </ul>
+            </article>
+          </section>
+
+          {% include mailchimp.html %}
+          {% include assets.html %}
+          {% include widgets.html %}
+          {% include recognition.html %}
+          {% include about.html %}
+          {% include team.html %}
+        </main>
+
+        {% include footer.html %}
+      </div>
+    </div>
+
+    {% include scripts.html %}
+  </body>
+</html>

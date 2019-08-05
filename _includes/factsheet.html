@@ -1,0 +1,118 @@
+<aside class="factsheet grid__item">
+  <h2 id="factsheet" class="factsheet__title">Factsheet</h2>
+
+  {% if page.layout == "company" %}
+  <dl class="factsheet__list">
+    <dt>Developer:</dt>
+    <dd>
+      <a href=".">{{presskit.title}}</a>
+    </dd>
+    <dd>Based in {{presskit.based-in}}</dd>
+
+    <dt>Founding date:</dt>
+    <dd>{{presskit.founding-date}}</dd>
+
+    <dt>Website:</dt>
+    <dd>
+      <a href="{{presskit.website}}">{{presskit.website | remove_first: 'http://' | remove_first: "https://" }}</a>
+    </dd>
+
+    <dt>Press / Business contact:</dt>
+    <dd>
+      <a href="mailto:{{presskit.press-contact}}">{{presskit.press-contact}}</a>
+    </dd>
+
+    <dt>Social:</dt>
+    {% for social in presskit.socials %}
+    <dd>
+      <a href="{{ social.link }}">{{ social.name }}</a>
+    </dd>
+    {% endfor %}
+
+    <dt>Releases:</dt>
+    {% for product in site.products %}
+    <dd>
+      <a href="{{ product.url }}">{{ product.title }}</a>
+    </dd>
+    {% endfor %}
+
+    <dt>Address:</dt>
+    {% for line in presskit.address %}
+    <dd>{{ line }}</dd>
+    {% endfor %}
+
+    <dt>Phone:</dt>
+    <dd>{{presskit.phone}}</dd>
+  </dl>
+  {% endif %}
+
+  {% if page.layout == "product" %}
+  <dl class="factsheet__list">
+    <dt>Developer:</dt>
+    <dd>
+      <a href="..">{{company.title}}</a>
+    </dd>
+    <dd>Based in {{company.based-in}}</dd>
+
+    {% for partner in presskit.partners %}
+    <dt>{{ partner.type }}:</dt>
+    <dd>
+      {% if partner.website %}
+        <a href="{{ partner.website }}">{{ partner.title }}</a>
+      {% else %}
+        {{ partner.title }}
+      {% endif %}
+    </dd>
+    {% if partner.based-in %}<dd>Based in {{ partner.based-in }}</dd>{% endif %}
+    {% endfor %}
+
+    <dt>Release date:</dt>
+    {% for release in presskit.release-dates %}
+    <dd>{{ release }}</dd>
+    {% endfor %}
+
+    <dt>Platforms:</dt>
+    {% for platform in presskit.platforms %}
+    <dd>
+      {% if platform.link %}
+        <a href="{{ platform.link }}">{{ platform.name }}</a>
+      {% else %}
+        {{ platform.name }}
+      {% endif %}
+    </dd>
+    {% endfor %}
+
+    <dt>Website:</dt>
+    <dd>
+      <a href="{{presskit.website}}">{{ presskit.website | remove_first: 'http://' | remove_first: "https://" }}</a>
+    </dd>
+
+    <dt>Regular Price:</dt>
+    {% for price in presskit.prices %}
+    <dd>{{ price.currency }} {{ price.value }}</dd>
+    {% endfor %}
+
+    {% for relation in presskit.relations %}
+    <dt>{{ relation.type }}:</dt>
+    <dd>
+      <a href="{{ relation.path }}">{{ relation.product }}</a>
+    </dd>
+    {% endfor %}
+
+    {% for relation in presskit.relation-of %}
+    <dt>{{ relation.type }} of:</dt>
+    <dd>
+      <a href="{{ relation.path }}">{{ relation.text }}</a>
+    </dd>
+    {% endfor %}
+  </dl>
+
+  {% if presskit.press-copy-request %}
+  <p class="press">
+    <a href="{{ presskit.press-copy-request }}" class="button" tabindex="0">
+      Request Press Copy
+    </a>
+  </p>
+  {% endif %}
+  {% endif %}
+</aside>
