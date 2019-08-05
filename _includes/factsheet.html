@@ -12,10 +12,12 @@
     <dt>Founding date:</dt>
     <dd>{{presskit.founding-date}}</dd>
 
+    {% if presskit.website %}}
     <dt>Website:</dt>
     <dd>
       <a href="{{presskit.website}}">{{presskit.website | remove_first: 'http://' | remove_first: "https://" }}</a>
     </dd>
+    {% endif %}
 
     <dt>Press / Business contact:</dt>
     <dd>
@@ -36,13 +38,17 @@
     </dd>
     {% endfor %}
 
+    {% if presskit.address %}
     <dt>Address:</dt>
     {% for line in presskit.address %}
     <dd>{{ line }}</dd>
     {% endfor %}
+    {% endif %}
 
+    {% if presskit.phone %}
     <dt>Phone:</dt>
     <dd>{{presskit.phone}}</dd>
+    {% endif %}
   </dl>
   {% endif %}
 
