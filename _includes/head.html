@@ -7,7 +7,14 @@
 <title>{{presskit.title}}</title>
 {% endif %}
 
-<link rel="shortcut icon" href="assets/images/favicon.ico">
+{% assign favicon_ico = site.static_files | where: "name", "favicon.ico" %}
+{% assign favicon_png = site.static_files | where: "name", "favicon.png" %}
+
+{% if favicon_png %}
+<link rel="shortcut icon" href="{{ favicon_png }}">
+{% elseif favicon_ico %}
+<link rel="shortcut icon" href="{{ favicon_ico }}">
+{% endif %}
 
 <link rel="stylesheet" href="{{ site.url }}/assets/css/normalize.css">
 <link rel="stylesheet" href="{{ site.url }}/assets/css/master.css">
