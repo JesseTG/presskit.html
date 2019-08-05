@@ -11,9 +11,9 @@
 {% assign favicon_png = site.static_files | where: "name", "favicon.png" %}
 
 {% if favicon_png %}
-<link rel="shortcut icon" href="{{ site.url }}/{{ favicon_png.path }}">
+<link rel="shortcut icon" href="{{ site.url }}/{{ favicon_png[0].path }}">
 {% elsif favicon_ico %}
-<link rel="shortcut icon" href="{{ site.url }}/{{ favicon_ico.path }}">
+<link rel="shortcut icon" href="{{ site.url }}/{{ favicon_ico[0].path }}">
 {% endif %}
 
 <link rel="stylesheet" href="{{ site.url }}/assets/css/normalize.css">
