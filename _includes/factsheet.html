@@ -7,12 +7,16 @@
     <dd>
       <a href=".">{{presskit.title}}</a>
     </dd>
+    {% if presskit.based-in %}
     <dd>Based in {{presskit.based-in}}</dd>
+    {% endif %}
 
+    {% if presskit.founding-date %}
     <dt>Founding date:</dt>
     <dd>{{presskit.founding-date}}</dd>
+    {% endif %}
 
-    {% if presskit.website %}}
+    {% if presskit.website %}
     <dt>Website:</dt>
     <dd>
       <a href="{{presskit.website}}">{{presskit.website | remove_first: 'http://' | remove_first: "https://" }}</a>
