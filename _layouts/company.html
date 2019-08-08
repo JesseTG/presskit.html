@@ -4,8 +4,9 @@
 <html>
   <head>
     {% assign presskit = site.data.company %}
-    {% assign images = site.static_files | where: "image", true %}
     {% assign company = site.data.company %}
+    {% assign images = site.static_files | where_exp: "i", "i.path contains company.image-dir" %}
+    {% assign header = images | where: "header", true | first %}
     {% include head.html %}
   </head>
   <body>
@@ -14,8 +15,8 @@
 
       <div class="page-wrapper grid__item">
         <header class="page-header">
-          {% if company.header %}
-          <img src="{{ site.baseurl }}/assets/images/{{ company.header }}" alt="{{presskit.title}}" title="{{presskit.title}}">
+          {% if header %}
+          <img src="{{ site.baseurl }}{{ header.path }}" alt="{{presskit.title}}" title="{{presskit.title}}">
           {% endif %}
         </header>
 

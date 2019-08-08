@@ -10,7 +10,6 @@
 
 title: My Super Game
 website: https://pizzaburger.studio/mysupergame
-header: products/mysupergame/header.jpg
 
 # You can also add an URL to a request page for this product.
 # A button will be displayed on the page.
@@ -243,6 +242,9 @@ contacts:
     link: https://facebook.com/pizzaburgerstudio
   - name: Web
     link: http://mysupergame.pizzaburger.studio
+
+
+image-dir: assets/images/mysupergame
 
 # All done!
 ---

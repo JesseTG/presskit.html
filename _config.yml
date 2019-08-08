@@ -19,8 +19,61 @@ defaults:
   - scope:
       path: "assets/images"
     values:
+      image: true
+  - scope:
+        path: "assets/images/company"
+    values:
+      company-image: true
+  - scope:
+      path: "assets/images/*/*.png"
+    values:
+      png: true
+  - scope:
+      path: "assets/images/*/*.jpg"
+    values:
+      jpg: true
+      jpeg: true
+  - scope:
+      path: "assets/images/*/*.jpeg"
+    values:
+      jpg: true
+      jpeg: true
+  - scope:
+      path: "assets/images/*/*.gif"
+    values:
+      gif: true
+  - scope:
+      path: "assets/images/*/*.webp"
+    values:
+      webp: true
+  - scope:
+      path: "assets/images/*/*.ico"
+    values:
+      ico: true
+  - scope:
+      path: "assets/images/*/*.svg"
+    values:
+      svg: true
+  - scope:
+      path: "assets/images/*/favicon.*"
+    values:
+      favicon: true
+  - scope:
+      path: "assets/images/*/*header*.*"
+    values:
       header: true
-
+  - scope:
+      path: "assets/images/*/*logo*.*"
+    values:
+      logo: true
+  - scope:
+      path: "assets/images/*/*screenshot*.*"
+    values:
+      screenshot: true
+  - scope:
+      path: "assets/images/*/*wallpaper*.*"
+    values:
+      wallpaper: true
 
 strict_front_matter: true
 

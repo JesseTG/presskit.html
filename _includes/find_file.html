@@ -1,0 +1,8 @@
+{% assign _exts = include.extensions | split: "," %}
+{%- for extension in _exts -%}
+    {%- assign _file = site.static_files | where: "basename", include.name | where: "extname", extension | first  -%}
+    {%- if _file -%}
+    {{- _file.path -}}
+    {%- break -%}
+    {%- endif -%}
+{%- endfor -%}
