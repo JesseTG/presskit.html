@@ -85,7 +85,7 @@
     {% assign logos = images | where: "logo", true %}
     {% if logos %}
     {% for logo in logos %}
-    <a href="images/{{ logo.path }}">
+    <a href="{{ site.baseurl }}{{ logo.path }}">
         <img src="{{ site.baseurl }}{{ logo.path }}" alt="{{ presskit.title }} Logo" class="logo">
     </a>
     {% endfor %}
