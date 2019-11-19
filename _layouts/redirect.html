@@ -1,18 +1,16 @@
 ---
 ---
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url={{link}}">
-  <title>Redirecting…</title>
+  <meta http-equiv="refresh" content="1;url={{ page.redirect.to }}">
+  <title>Redirecting to {{ page.redirect.to }}</title>
 </head>
-
 <body>
-  <p>
-    <a href="{{link}}">Click here to go to {{name}}.</a>
-  </p>
+<script>
+  window.location.href = "{{ page.redirect.to }}";
+</script>
+<p>Redirecting...if nothing happens, <a href="{{ page.redirect.to }}">click here</a>.</p>
 </body>
-
 </html>
