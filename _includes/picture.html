@@ -12,10 +12,10 @@
     {% endfor %}
 
     {%- capture src -%}
-        {% if include.image_path contains "://" %}
-            "{{ include.image_path }}"
+        {% if include.src contains "://" %}
+            "{{ include.src }}"
         {% else %}
-            "{{ include.image_path | relative_url }}"
+            "{{ include.src | relative_url }}"
         {% endif %}
     {%- endcapture -%}
 
