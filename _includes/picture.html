@@ -13,11 +13,11 @@
 
     {%- capture src -%}
         {% if include.src contains "://" %}
-            "{{ include.src }}"
+            {{- include.src -}}
         {% else %}
-            "{{ include.src | relative_url }}"
+            {{- include.src | relative_url -}}
         {% endif %}
     {%- endcapture -%}
 
-    <img src="{{ src }}" {% if include.alt %}alt="{{ include.alt }}"{% endif %}>
+    <img src="{{- src -}}" {% if include.alt %}alt="{{- include.alt -}}"{% endif %}>
 </picture>
