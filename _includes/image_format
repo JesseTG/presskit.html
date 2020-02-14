@@ -1,0 +1,39 @@
+{%- capture extension -%}{{ include.file | split: "." | last | downcase }}{%- endcapture -%}
+{%- case extension -%}
+  {%- when "apng" -%}
+    image/apng
+  {%- when "bmp" -%}
+    image/bmp
+  {%- when "gif" -%}
+    image/gif
+  {%- when "ico" -%}
+    image/x-icon
+  {%- when "cur" -%}
+    image/x-icon
+  {%- when "jpg" -%}
+    image/jpeg
+  {%- when "jpeg" -%}
+    image/jpeg
+  {%- when "jfif" -%}
+    image/jpeg
+  {%- when "jif" -%}
+    image/jpeg
+  {%- when "jpe" -%}
+    image/jpeg
+  {%- when "pjpeg" -%}
+    image/jpeg
+  {%- when "pjp" -%}
+    image/jpeg
+  {%- when "png" -%}
+    image/png
+  {%- when "svg" -%}
+    image/svg+xml
+  {%- when "tif" -%}
+    image/tiff
+  {%- when "tiff" -%}
+    image/tiff
+  {%- when "webp" -%}
+    image/webp
+  {%- else -%}
+    image/{{ extension }}
+{%- endcase -%}
