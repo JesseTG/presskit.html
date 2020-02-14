@@ -1,5 +1,5 @@
 <picture>
-    {% for p in f.pictures %}
+    {% for p in include.pictures %}
         {%- capture type -%}
           {% if p.type %}
             {{ p.type }}
@@ -12,12 +12,12 @@
     {% endfor %}
 
     {%- capture src -%}
-        {% if f.image_path contains "://" %}
-            "{{ f.image_path }}"
+        {% if include.image_path contains "://" %}
+            "{{ include.image_path }}"
         {% else %}
-            "{{ f.image_path | relative_url }}"
+            "{{ include.image_path | relative_url }}"
         {% endif %}
     {%- endcapture -%}
 
-    <img src="{{ src }}" alt="{% if f.alt %}{{ f.alt }}{% endif %}">
+    <img src="{{ src }}" {% if include.alt %}alt="{{ include.alt }}"{% endif %}>
 </picture>
