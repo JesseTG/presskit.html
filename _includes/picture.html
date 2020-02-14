@@ -1,0 +1,23 @@
+<picture>
+    {% for p in f.pictures %}
+        {%- capture type -%}
+          {% if p.type %}
+            {{ p.type }}
+          {% else %}
+            {%- include image_format file=p.url -%}
+          {% endif %}
+        {%- endcapture -%}
+
+        <source srcset="{{ p.url }}" type="{{ type }}" {% if p.media %}media="{{ p.media }}"{% endif %}>
+    {% endfor %}
+
+    {%- capture src -%}
+        {% if f.image_path contains "://" %}
+            "{{ f.image_path }}"
+        {% else %}
+            "{{ f.image_path | relative_url }}"
+        {% endif %}
+    {%- endcapture -%}
+
+    <img src="{{ capture }}" alt="{% if f.alt %}{{ f.alt }}{% endif %}">
+</picture>

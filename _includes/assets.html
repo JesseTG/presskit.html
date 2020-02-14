@@ -53,7 +53,7 @@
         {% unless image.favicon or image.header or image.logo %}
         <div class="gallery__item">
             <a href="{{ image.path }}">
-                <img src="{{ image.path }}" alt="{{ presskit.title }} Image">
+                {%- include picture.html src=image.path alt=presskit.title -%}
             </a>
         </div>
         {% endunless %}
